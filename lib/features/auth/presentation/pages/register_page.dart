@@ -9,16 +9,18 @@ import 'package:warta_sae/features/auth/presentation/widgets/sign_in_button.dart
 import 'package:warta_sae/features/auth/presentation/widgets/sign_in_google_button.dart';
 import 'package:warta_sae/features/auth/presentation/widgets/title_section.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmationController =
+      TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   String? validateEmail(value) {
@@ -70,8 +72,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 32,
                 ),
                 const TitleSection(
-                  title: "Lets Sign you in",
-                  subtitle: "Welcome Back, You Have Been Missed",
+                  title: "Lets Create an Account",
+                  subtitle: "Start your great journey here!",
                 ),
                 const SizedBox(
                   height: 32,
@@ -84,6 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                       TextFormInput(
                         controller: _emailController,
                         validator: validateEmail,
+                        name: "Full Name",
+                        icon: const Icon(Icons.person_2_outlined),
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormInput(
+                        controller: _emailController,
+                        validator: validateEmail,
                         name: "Email",
                         icon: const Icon(Icons.mail_outline),
                       ),
@@ -92,6 +101,12 @@ class _LoginPageState extends State<LoginPage> {
                         passwordController: _passwordController,
                         passwordValidator: validatePassword,
                         name: "Password",
+                      ),
+                      const SizedBox(height: 16),
+                      PasswordFormInput(
+                        passwordController: _passwordConfirmationController,
+                        passwordValidator: validatePassword,
+                        name: "Password Confirmation",
                       ),
                       const SizedBox(height: 8),
                       ForgotPassword(
@@ -105,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 16),
                       SignInButton(
                         onPressed: onFormSubmit,
-                        textButton: "Sign in",
+                        textButton: "Sign Up",
                       ),
                     ],
                   ),
@@ -115,13 +130,13 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 24),
                 SignInGoogleButton(
                   onPressed: () {},
-                  textButton: "Sign in with Google",
+                  textButton: "Sign Up with Google",
                 ),
                 const SizedBox(height: 32),
                 const AuthPageNavgiate(
-                  text: "Don't have an account?",
-                  linkText: "Sign Up",
-                  routeName: "/register",
+                  text: "Already have an account?",
+                  linkText: "Sign In",
+                  routeName: "/login",
                 )
               ],
             ),

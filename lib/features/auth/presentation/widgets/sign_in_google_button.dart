@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:warta_sae/core/constants/custom_button_style.dart';
 
 class SignInGoogleButton extends StatelessWidget {
-  const SignInGoogleButton({super.key, this.onPressed});
+  const SignInGoogleButton(
+      {super.key, this.onPressed, required this.textButton});
   final dynamic onPressed;
+  final String textButton;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +20,9 @@ class SignInGoogleButton extends StatelessWidget {
             height: 20,
           ),
           const SizedBox(width: 8),
-          const Text(
-            "Sign in with Google",
-            style: TextStyle(color: Colors.black87, fontSize: 14),
+          Text(
+            textButton,
+            style: const TextStyle(color: Colors.black87, fontSize: 14),
           )
         ],
       ),
